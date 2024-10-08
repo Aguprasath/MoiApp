@@ -1,5 +1,6 @@
 package org.aguprasath.moiapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,10 +14,7 @@ import java.util.List;
 @Table(name="users")
 public class User {
 
-//    @Id
-//    private int id;
-//    private String username;
-//    private String password;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,12 +31,12 @@ public class User {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // Relationships
-    @OneToMany(mappedBy = "createdBy")
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "createdBy",cascade = CascadeType.ALL)
     private List<Event> events;
 
-//    @OneToMany(mappedBy = "contributor")
-//    private List<Contribution> contributions;
+
 
 
 }

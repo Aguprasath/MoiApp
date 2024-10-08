@@ -10,5 +10,8 @@ import java.util.List;
 @Repository
 public interface ContributionRepo extends JpaRepository<Contribution, Long> {
 
-    public List<Contribution> findByEvent(Event event);
+
+    List<Contribution> findByEventIdAndContributorName(Long eventId, String contributorName);
+
+    List<Contribution> findByEventIdAndStatus(Long eventId, String status);
 }

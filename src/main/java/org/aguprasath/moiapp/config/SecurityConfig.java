@@ -82,6 +82,7 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf.disable()) // Disable CSRF for stateless applications or enable as per your need
                 .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("register","login","signUp").permitAll()
                         .anyRequest().authenticated() // Require authentication for all requests
                 )
                 .httpBasic(Customizer.withDefaults())
